@@ -1,0 +1,26 @@
+blinque/
+├── config/
+│   └── loader.js           // Injects server.config.js data into the module
+├── core/
+│   ├── BaseProvider.js     // Common fetch utilities & error handling
+│   ├── ShippingService.js  // Logic for Carriers
+│   └── PaymentService.js   // Logic for Gateways
+├── providers/
+│   ├── shipping/
+│   │   └── courier-guy.js  // The Courier Guy specific API logic
+│   └── gateways/
+│       └── yoco.js         // Yoco specific API logic (Provisional)
+├── models/
+│   └── schema.js           // Data mappers (Input/Output normalization)
+├── services/
+│   ├── QuoteService.js     // Calculations: Weights, Dimensions, and Distance
+│   └── CheckoutService.js  // Orchestrates Payment + Shipping handshakes
+├── controllers/
+│   ├── ShippingController.js
+│   └── PaymentController.js
+├── routes/
+│   ├── shipping.js
+│   └── payment.js
+├── index.js                // The Main Entry Point
+├── package.json
+└── README.md
