@@ -5,9 +5,9 @@ import { getRates, createShippingOrder } from '../controllers/ShippingController
 const router = express.Router();
 
 // Step 1: Get prices for the customer to choose from
-router.post('/quote', getRates);
+router.post('/shipping/quote', getRates);
 
 // Step 3: Call this after Step 2 (Payment) is successful
-router.post('/order', createShippingOrder);
+router.post('/shipping/order', createShippingOrder);
 
 export default router;

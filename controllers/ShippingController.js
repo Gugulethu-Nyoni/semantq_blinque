@@ -1,13 +1,34 @@
-// controllers/ShippingController.js
 import blinque from '../index.js';
+
+/**
+ * Helper to ensure the engine is ready before any action
+ */
+const ensureReady = async () => {
+  if (!blinque._initialized) {
+    await blinque.init();
+  }
+  if (!blinque.shipping) {
+    throw new Error("Shipping service is not configured or failed to initialize.");
+  }
+};
 
 /**
  * Handles the POST /quote request
  */
 export const getRates = async (req, res) => {
   try {
+    // Ensure blinque is initialized before proceeding
+    await ensureReady();
+
     const { customerAddress, products } = req.body;
-    if (!blinque.shipping) throw new Error("Shipping service not initialized.");
+    
+    // Basic payload validation
+    if (!customerAddress || !products) {
+      return res.status(400).json({ 
+        success: false, 
+        message: "Missing required fields: customerAddress and products are mandatory." 
+      });
+    }
 
     const rates = await blinque.shipping.getShippingQuotes(customerAddress, products);
 
@@ -17,7 +38,11 @@ export const getRates = async (req, res) => {
       rates
     });
   } catch (error) {
-    return res.status(400).json({ success: false, message: error.message });
+    console.error(`[ShippingController] Quote Error:`, error.message);
+    return res.status(error.message.includes("configured") ? 500 : 400).json({ 
+      success: false, 
+      message: error.message 
+    });
   }
 };
 
@@ -27,9 +52,9 @@ export const getRates = async (req, res) => {
  */
 export const createShippingOrder = async (req, res) => {
   try {
-    const { orderId, quoteReference, totalPrice, signature, customerDetails } = req.body;
+    await ensureReady();
 
-    if (!blinque.shipping) throw new Error("Shipping service not initialized.");
+    const { orderId, quoteReference, totalPrice, signature, customerDetails } = req.body;
 
     // 1. Signature Verification (The Guard)
     const isValid = blinque.shipping.provider.verifySignature(
@@ -59,6 +84,7 @@ export const createShippingOrder = async (req, res) => {
       shipment 
     });
   } catch (error) {
+    console.error(`[ShippingController] Order Error:`, error.message);
     return res.status(400).json({ success: false, message: error.message });
   }
 };

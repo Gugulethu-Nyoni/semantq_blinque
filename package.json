@@ -1,1 +1,34 @@
-// package.json
+{
+  "name": "@semantq/blinque",
+  "version": "1.0.0",
+  "description": "Scalable logistics and payment logic engine for Semantq JS Framework",
+  "main": "index.js",
+  "type": "module",
+  "author": "Gugulethu Nyoni",
+  "license": "ISC",
+  "keywords": [
+    "semantq",
+    "logistics",
+    "shipping",
+    "checkout",
+    "yoco",
+    "courier-guy"
+  ],
+  "semantq-module": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build step specified\" && exit 0"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "peerDependencies": {
+    "express": "^4.18.2"
+  }
+}
