@@ -128,3 +128,5 @@ Blinque includes a built-in **Schema Mapper**. When it receives product data fro
 * Formats address objects to meet carrier-specific API requirements.
 * Returns "Prisma-ready" objects so your main app can save to the `Delivery` or `Payment` tables immediately.
 
+Todo: 
+
