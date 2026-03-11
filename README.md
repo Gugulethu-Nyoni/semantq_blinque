@@ -1,6 +1,6 @@
 # Blinque ⚡️
 
-**Blinque** is a zero-touch logistics and payment engine designed specifically for the semantq Commerce ecosystem. It abstracts the complexity of shipping rate calculations and payment gateway handshakes into a single, configurable module that works as a seamless plug and play for semantq Commerce and any semantqQL backend. 
+**Blinque** is a zero-touch, plug and play logistics and payment engine designed specifically for the semantq Commerce ecosystem. It abstracts the complexity of shipping rate calculations and payment gateway handshakes into a single, configurable module that works as a seamless plug and play for semantq Commerce and any semantqQL backend. 
 
 ### Core Philosophy
 
