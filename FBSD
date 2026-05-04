@@ -1,26 +1,27 @@
 blinque/
 ├── config/
-│   └── loader.js           // Injects server.config.js data into the module
+│   └── loader.js           
 ├── core/
-│   ├── BaseProvider.js     // Common fetch utilities & error handling
-│   ├── ShippingService.js  // Logic for Carriers
-│   └── PaymentService.js   // Logic for Gateways
+│   ├── BaseProvider.js     
+│   ├── ShippingService.js  
+│   └── PaymentService.js   
 ├── providers/
 │   ├── shipping/
-│   │   └── courier-guy.js  // The Courier Guy specific API logic
+│   │   └── courier-guy.js  
 │   └── gateways/
-│       └── yoco.js         // Yoco specific API logic (Provisional)
+│       ├── yoco.js         // Yoco specific API logic
+│       └── paystack.js     // PayStack specific API logic (NEW)
 ├── models/
-│   └── schema.js           // Data mappers (Input/Output normalization)
+│   └── schema.js           
 ├── services/
-│   ├── QuoteService.js     // Calculations: Weights, Dimensions, and Distance
-│   └── CheckoutService.js  // Orchestrates Payment + Shipping handshakes
+│   ├── QuoteService.js     
+│   └── CheckoutService.js  // UPDATE to support multiple gateways
 ├── controllers/
 │   ├── ShippingController.js
-│   └── PaymentController.js
+│   └── PaymentController.js // UPDATE to pass gateway param
 ├── routes/
 │   ├── shipping.js
 │   └── payment.js
-├── index.js                // The Main Entry Point
+├── index.js                // UPDATE to initialize both gateways
 ├── package.json
 └── README.md
